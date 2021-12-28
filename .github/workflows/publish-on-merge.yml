@@ -20,6 +20,8 @@ jobs:
         run: npm ci
       - name: Run build
         run: npm run build
+      - name: Version bump
+        run: npm version patch
       - name: Publish a new version
         run: npm publish
         env:
