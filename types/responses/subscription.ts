@@ -83,10 +83,22 @@ export type SubscriptionCidrWhitelist = {
  * Subscription VPC Peering
  * @param id The id of the vpc peering
  * @param status The status of the vpc peering
+ * @param regionId The ID of the region
+ * @param regionName The name of the region
+ * @param awsAccountId The AWS account ID
+ * @param vpcUid The VPC ID
+ * @param vpcCidr The VPC CIDR
+ * @param awsPeeringUid The AWS peering ID
  */
 export type SubscriptionVpcPeering = {
     id: number,
-    status: SubscriptionVpcPeeringStatus
+    status: SubscriptionVpcPeeringStatus,
+    regionId: number,
+    regionName: string,
+    awsAccountId: string,
+    vpcUid: string,
+    vpcCidr: string,
+    awsPeeringUid: string
 }
 
 /**
