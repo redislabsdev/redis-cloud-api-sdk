@@ -135,9 +135,9 @@ export type DatabaseImportParameters = {
 }
 
 /**
- * The region parameters needed for POST backup request
- * @param regionName The name of the region to backup
+ * The region name parameters
+ * @param regionName The name of the region
  */
-export type BackupRegion = {
+export type RegionName = {
     regionName: string
 }
