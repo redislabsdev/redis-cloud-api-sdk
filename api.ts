@@ -238,6 +238,7 @@ export class CloudAPISDK extends Client {
      * Backing up a database
      * @param subscriptionId The id of the subscription 
      * @param databaseId The id of the database
+     * @param parameters The backup parameters (Optional)
      */
     async backupDatabase(subscriptionId: number, databaseId: number, parameters?: BackupRegion): Promise<TaskResponse & {[key: string]: any}> {
         return this.database.backupDatabase(subscriptionId, databaseId, parameters);
