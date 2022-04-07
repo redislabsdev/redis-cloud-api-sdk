@@ -107,17 +107,17 @@ export type DatabaseSecurity = {
  */
 export type DatabaseClustering = {
     numberOfShards?: number,
-    regexRules?: RegexRules[],
+    regexRules?: RegexRule[],
     hashingPolicy: any[],
     [key: string]: any
 }
 
 /**
- * The regex rules
+ * The regex rule
  * @param ordinal The position of the rule in the list of rules
  * @param pattern The regex pattern of the rule 
  */
-export type RegexRules = {
+export type RegexRule = {
     ordinal: number,
     pattern: string
 }
