@@ -16,7 +16,7 @@ export { CloudAccountProvider } from './types/responses/cloud-account';
 export {
     DatabaseProtocol, DatabaseDataEvictionPolicy, DatabaseDataPersistence, 
     DatabaseImportSource, DatabaseThroughputMeasurement, DatabaseStatus, 
-    DatabaseResponse, DatabaseReplicaOfEndpoints
+    DatabaseResponse, DatabaseReplicaOfEndpoints, RegexRules, DatabaseClustering
 } from './types/responses/database';
 export {
     SubscriptionCloudProvider, SubscriptionMemoryStorage, SubscriptionResponse,
