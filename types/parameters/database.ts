@@ -1,4 +1,5 @@
 import { DatabaseProtocol, DatabaseDataPersistence, DatabaseDataEvictionPolicy, DatabaseThroughputMeasurement, DatabaseImportSource } from '../responses/database';
+import { ActiveActiveDatabaseRegionParameters } from './subscription';
 
 /**
  * The parameters used to create a database
@@ -35,6 +36,7 @@ export type DatabaseCreationParameters = {
     dataEvictionPolicy?: DatabaseDataEvictionPolicy,
     replication?: boolean,
     throughputMeasurement?: DatabaseThroughputMeasurement,
+    localThroughputMeasurement?: LocalThroughputMeasurement[],
     averageItemSizeInBytes?: number,
     replicaOf?: string[],
     periodicBackupPath?: string,
@@ -85,7 +87,12 @@ export type DatabaseUpdateParameters = {
     clientSslCertificate?: string,
     password?: string,
     alerts?: Alert[],
-    regexRules?: string[]
+    regexRules?: string[],
+    globalAlerts?: Alert[],
+    globalDataPersistence?: DatabaseDataPersistence,
+    globalPassword?: string,
+    globalSourceIp?: string[],
+    regions?: ActiveActiveDatabaseRegionParameters[]
 }
 
 
@@ -141,3 +148,54 @@ export type DatabaseImportParameters = {
 export type RegionName = {
     regionName: string
 }
+
+/**
+ * The database backup parameters
+ */
+export type DatabaseBackupParameters = {
+    active?: boolean,
+    interval?: DatabaseBackupInterval,
+    storagePath?: string,
+    storageType?: DatabaseBackupStorageType,
+    timeUTC?: string
+};
+
+/**
+ * The database backup interval options
+ */
+export type DatabaseBackupInterval = 'every-1-hours' | 'every-2-hours' | 'every-4-hours' | 'every-6-hours' | 'every-12-hours' | 'every-24-hours';
+
+/**
+ * The database backup storage options
+ */
+export type DatabaseBackupStorageType = 'aws-s3' | 'azure-blob-storage' | 'google-blob-storage' | 'ftp';
+
+/**
+ * The Local Throughput Measurement object
+ * @param region The name of the region
+ * @param writeOperationsPerSecond The writes/second speed
+ * @param readOperationsPerSecond The reads/second speed
+ */
+export type LocalThroughputMeasurement = {
+    region: string,
+    writeOperationsPerSecond: number,
+    readOperationsPerSecond: number
+};
+
+/**
+ * The AA database information as returned by GET regions
+ * @param databaseId The database ID
+ * @param databaseName The database ID
+ */
+export type CrdbRegion = Pick<LocalThroughputMeasurement, 'readOperationsPerSecond' | 'writeOperationsPerSecond'> & {
+    databaseId: number,
+    databaseName: string
+};
+
+/**
+ * The database object for create active-active region request
+ */
+export type CreateRegionActiveActiveDatabaseParameters = {
+    localThroughputMeasurement: LocalThroughputMeasurement,
+    name: string
+};

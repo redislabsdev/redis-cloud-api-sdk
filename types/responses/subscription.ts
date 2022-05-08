@@ -137,3 +137,44 @@ export type SubscriptionMemoryStorage = 'ram' | 'ram-and-flash';
  * @param GCP Google Cloud Platform cloud provider
  */
 export type SubscriptionCloudProvider = 'AWS' | 'GCP';
+
+/**
+ * The VPC Peerings information for Active Active
+ * @param subscriptionId The subscription ID
+ * @param regions The VPC Peering information per regions
+ */
+export type ActiveActiveVpcPeeringsResponse = {
+    subscriptionId: number,
+    regions: ActiveActiveVpcPeeringsRegion[]
+};
+
+/**
+ * The VPC Peerings for Active Active region
+ * @param id The ID of the VPC Peering
+ * @param region The region of the VPC Peering
+ * @param vpcPeerings The information of the VPC Peerings
+ */
+export type ActiveActiveVpcPeeringsRegion = {
+    id: number,
+    region: string,
+    vpcPeerings: SubscriptionVpcPeering[]
+};
+
+/**
+ * The regions information for Active Active subscriptions
+ */
+export type ActiveActiveRegionsResponse = {
+    subscriptionId: number,
+    regions: ActiveActiveRegionInformation[]
+};
+
+/**
+ * The region (singular) information for Active Active subscriptions
+ */
+export type ActiveActiveRegionInformation = {
+    regionId: number,
+    region: string,
+    deploymentCidr: string,
+    vpcId: string,
+    databases: CrdbRegion[]
+};
