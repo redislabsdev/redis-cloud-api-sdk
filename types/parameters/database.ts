@@ -14,15 +14,15 @@ import { DatabaseProtocol, DatabaseDataPersistence, DatabaseDataEvictionPolicy, 
  * @param throughputMeasurement Optional. The throughput measurement of the database
  * @param throughputMeasurement.by Required. Throughput measurement method. Either ‘number-of-shards’ or ‘operations-per-second’
  * @param throughputMeasurement.value Required. Throughput value (as applies to selected measurement method)
- * @param replicaOf Optional. This database will be a replica of the specified Redis databases provided as one or more URI (sample format: 'redis://user:password@host:port)'. If the URI provided is Redis Labs Cloud instance, only host and port should be provided (using the format: ['redis://endpoint1:6379’, ‘redis://endpoint2:6380’] ).
+ * @param replicaOf Optional. This database will be a replica of the specified Redis databases provided as one or more URI (sample format: 'redis://user:password@host:port)'. If the URI provided is Redis Cloud instance, only host and port should be provided (using the format: ['redis://endpoint1:6379’, ‘redis://endpoint2:6380’] ).
  * @param periodicBackupPath Optional. If specified, database will be able to perform backups to this path. If empty string is received, backup path will be removed
  * @param sourceIp Optional. List of source IP addresses or subnet masks. If specified, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges (example: ['192.168.10.0/32’, ‘192.168.12.0/24’] )
  * @param enableTls Optional. When 'true’, requires TLS authentication for all connections (mTLS with valid clientSslCertificate, regular TLS when the clientSslCertificate is not provided)
  * @param clientSslCertificate Optional. If specified, this SSL certificate will be required to authenticate user connections. If empty string is received, SSL certificate will be removed
  * @param password Optional. If specified, this password will be used to access the database
- * @param alerts Optional. Redis Labs database alerts
+ * @param alerts Optional. Redis database alerts
  * @param averageItemSizeInBytes Optional. Relevant only to ram-and-flash subscriptions. Estimated average size (measured in bytes) of the items stored in the database, Default: 1000
- * @param modules Optional. Redis Labs modules to be provisioned in the database
+ * @param modules Optional. Redis modules to be provisioned in the database
   */
 export type DatabaseCreationParameters = {
     dryRun?: boolean,
@@ -60,7 +60,7 @@ export type DatabaseCreationParameters = {
  * @param throughputMeasurement Optional. The throughput measurement of the database
  * @param throughputMeasurement.by Required. Throughput measurement method. Either ‘number-of-shards’ or ‘operations-per-second’
  * @param throughputMeasurement.value Required. Throughput value (as applies to selected measurement method)
- * @param replicaOf Optional. This database will be a replica of the specified Redis databases provided as one or more URI (sample format: 'redis://user:password@host:port)'. If the URI provided is Redis Labs Cloud instance, only host and port should be provided (using the format: ['redis://endpoint1:6379’, ‘redis://endpoint2:6380’] ).
+ * @param replicaOf Optional. This database will be a replica of the specified Redis databases provided as one or more URI (sample format: 'redis://user:password@host:port)'. If the URI provided is Redis Cloud instance, only host and port should be provided (using the format: ['redis://endpoint1:6379’, ‘redis://endpoint2:6380’] ).
  * @param periodicBackupPath Optional. If specified, database will be able to perform backups to this path. If empty string is received, backup path will be removed
  * @param sourceIp Optional. List of source IP addresses or subnet masks. If specified, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges (example: ['192.168.10.0/32’, ‘192.168.12.0/24’] )
  * @param enableTls Optional. When 'true’, requires TLS authentication for all connections (mTLS with valid clientSslCertificate, regular TLS when the clientSslCertificate is not provided)
@@ -118,7 +118,7 @@ export type AlertName = 'dataset-size' | 'throughput-higher-than' | 'throughput-
 /**
  * The database module
  * @param name Required. The name of the database module.
- * @param parameters Optional Redis Labs database module parameters (name and value), as relevant to the specific module (see modules parameters specification)
+ * @param parameters Optional Redis database module parameters (name and value), as relevant to the specific module (see modules parameters specification)
  */
 export type Module = {
     name: DatabaseModule,
