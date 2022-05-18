@@ -103,7 +103,8 @@ export type SubscriptionVpcPeering = {
     vpcCidr?: string,
     awsPeeringUid?: string,
     vpcProjectUid?: string,
-    vpcNetworkName?: string
+    vpcNetworkName?: string,
+    [key: string]: any
 }
 
 /**
@@ -146,7 +147,8 @@ export type SubscriptionCloudProvider = 'AWS' | 'GCP';
  */
 export type ActiveActiveVpcPeeringsResponse = {
     subscriptionId: number,
-    regions: ActiveActiveVpcPeeringsRegion[]
+    regions: ActiveActiveVpcPeeringsRegion[],
+    [key: string]: any
 };
 
 /**
@@ -158,24 +160,34 @@ export type ActiveActiveVpcPeeringsResponse = {
 export type ActiveActiveVpcPeeringsRegion = {
     id: number,
     region: string,
-    vpcPeerings: SubscriptionVpcPeering[]
+    vpcPeerings: SubscriptionVpcPeering[],
+    [key: string]: any
 };
 
 /**
  * The regions information for Active Active subscriptions
+ * @param subscriptionId The subscription ID
+ * @param regions The regions information
  */
 export type ActiveActiveRegionsResponse = {
     subscriptionId: number,
-    regions: ActiveActiveRegionInformation[]
+    regions: ActiveActiveRegionInformation[],
+    [key: string]: any
 };
 
 /**
  * The region (singular) information for Active Active subscriptions
+ * @param regionId The region ID
+ * @param region The region name
+ * @param deploymentCidr The region CIDR value
+ * @param vpcId The region VPC ID value
+ * @param databases The region's databases
  */
 export type ActiveActiveRegionInformation = {
     regionId: number,
     region: string,
     deploymentCidr: string,
     vpcId: string,
-    databases: CrdbRegion[]
+    databases: CrdbRegion[],
+    [key: string]: any
 };

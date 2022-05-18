@@ -23,7 +23,7 @@ export type CreateSubscriptionParameters = {
     memoryStorage?: SubscriptionMemoryStorage,
     persistentStorageEncryption?: boolean,
     cloudProviders: CloudProvider[],
-    databases: DatabaseParameters[],
+    databases: DatabaseParameters[]
 }
 
 /**
@@ -70,6 +70,7 @@ export type CloudProviderRegion = {
  * @param modules Optional. Redis modules to be provisioned in the database
  * @param quantity Optional. Number of databases (of this type) that will be created. Default: 1
  * @param averageItemSizeInBytes Optional. Relevant only to ram-and-flash clusters. Estimated average size (measured in bytes) of the items stored in the database. Default: 1000
+ * @param localThroughputMeasurement The Local Throughput Measurement object
  */
 export type DatabaseParameters = {
     name: string,

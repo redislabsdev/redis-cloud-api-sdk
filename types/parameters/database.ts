@@ -155,6 +155,11 @@ export type RegionName = {
 
 /**
  * The database backup parameters
+ * @param active If to activate backup or not
+ * @param interval The backup time interval
+ * @param storagePath The path to store the backup files
+ * @param storageType The backup destination type
+ * @param timeUTC The time in UTC to backup the database
  */
 export type DatabaseBackupParameters = {
     active?: boolean,
@@ -198,6 +203,8 @@ export type CrdbRegion = Pick<LocalThroughputMeasurement, 'readOperationsPerSeco
 
 /**
  * The database object for create active-active region request
+ * @param localThroughputMeasurement The Local Throughput Measurement object
+ * @param name The name of the database
  */
 export type CreateRegionActiveActiveDatabaseParameters = {
     localThroughputMeasurement: LocalThroughputMeasurement,
