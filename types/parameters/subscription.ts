@@ -1,6 +1,6 @@
 import { SubscriptionMemoryStorage, SubscriptionCloudProvider } from '../responses/subscription'
 import { DatabaseProtocol, DatabaseDataPersistence, DatabaseThroughputMeasurement } from '../responses/database'
-import { LocalThroughputMeasurement, Module } from './database'
+import { Alert, CreateRegionActiveActiveDatabaseParameters, DatabaseBackupParameters, LocalThroughputMeasurement, Module } from './database'
 import { SubscriptionPaymentMethod } from '../responses/general'
 
 /**
@@ -23,7 +23,7 @@ export type CreateSubscriptionParameters = {
     memoryStorage?: SubscriptionMemoryStorage,
     persistentStorageEncryption?: boolean,
     cloudProviders: CloudProvider[],
-    databases: DatabaseParameters[]
+    databases: DatabaseParameters[],
 }
 
 /**
@@ -165,6 +165,7 @@ export type ActiveActiveCreateRegionParameters = {
     deploymentCIDR: string
 };
 
+
 /**
  * The Active Active delete region parameters
  */
@@ -178,17 +179,4 @@ export type ActiveActiveDeleteRegionParameters = {
  */
 export type ActiveActiveRegion = {
     region: string
-};
-
-/**
- * The region parameters for an Active Active database
- */
-export type ActiveActiveDatabaseRegionParameters = {
-    region: string,
-    alerts?: Alert[],
-    dataPersistence?: DatabaseDataPersistence,
-    sourceIp?: string[],
-    password?: string,
-    remoteBackup?: DatabaseBackupParameters,
-    localThroughputMeasurement?: LocalThroughputMeasurement
 };

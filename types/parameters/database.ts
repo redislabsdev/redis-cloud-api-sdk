@@ -1,5 +1,4 @@
 import { DatabaseProtocol, DatabaseDataPersistence, DatabaseDataEvictionPolicy, DatabaseThroughputMeasurement, DatabaseImportSource } from '../responses/database';
-import { ActiveActiveDatabaseRegionParameters } from './subscription';
 
 /**
  * The parameters used to create a database
@@ -198,4 +197,17 @@ export type CrdbRegion = Pick<LocalThroughputMeasurement, 'readOperationsPerSeco
 export type CreateRegionActiveActiveDatabaseParameters = {
     localThroughputMeasurement: LocalThroughputMeasurement,
     name: string
+};
+
+/**
+ * The region parameters for an Active Active database
+ */
+export type ActiveActiveDatabaseRegionParameters = {
+    region: string,
+    alerts?: Alert[],
+    dataPersistence?: DatabaseDataPersistence,
+    sourceIp?: string[],
+    password?: string,
+    remoteBackup?: DatabaseBackupParameters,
+    localThroughputMeasurement?: LocalThroughputMeasurement
 };

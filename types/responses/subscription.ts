@@ -1,3 +1,4 @@
+import { CrdbRegion } from '../parameters/database';
 import { DeploymentType } from '../parameters/subscription';
 import { Region } from './general';
 

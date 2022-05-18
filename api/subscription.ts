@@ -1,5 +1,6 @@
 import { 
     ActiveActiveAwsVpcPeeringParameters,
+    ActiveActiveDeleteRegionParameters,
     ActiveActiveGcpVpcPeeringParameters,
     CidrUpdateParameters, CreateSubscriptionParameters, SubscriptionUpdateParameters, 
     VpcPeeringCreationParameters 
