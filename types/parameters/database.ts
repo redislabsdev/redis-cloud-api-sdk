@@ -66,8 +66,13 @@ export type DatabaseCreationParameters = {
  * @param enableTls Optional. When 'true’, requires TLS authentication for all connections (mTLS with valid clientSslCertificate, regular TLS when the clientSslCertificate is not provided)
  * @param clientSslCertificate Optional. If specified, this SSL certificate will be required to authenticate user connections. If empty string is received, SSL certificate will be removed
  * @param password Optional. If specified, this password will be used to access the database
- * @param alerts Optional. Redis Labs database alerts
+ * @param alerts Optional. Redis database alerts
  * @param regexRules Optional. Shard regex rules. Relevant only for a sharded database
+ * @param globalAlerts Optional. The Redis database alerts for all regions in AA subscription (For AA subscription only)
+ * @param globalDataPersistence Optional. (For AA subscription only) 
+ * @param globalPassword Optional. The Rate of database data persistence for all regions in AA subscription (For AA subscription only)
+ * @param globalSourceIp Optional. List of source IP addresses or subnet masks for all regions in AA subscription (For AA subscription only)
+ * @param regions Optional. The parameters for database in a specific region, used to override global AA settings (For AA subscription only)
  */
 export type DatabaseUpdateParameters = { 
     dryRun?: boolean,
@@ -201,6 +206,13 @@ export type CreateRegionActiveActiveDatabaseParameters = {
 
 /**
  * The region parameters for an Active Active database
+ * @param region The region of the database
+ * @param alerts Optional The alerts for the database of a specified region
+ * @param dataPersistence Optional The data persistence for the database of a specified region
+ * @param sourceIp Optional The source IPs for the database of a specified region
+ * @param password Optional The password for the database of a specified region
+ * @param remoteBackup Optional The backup parameters for the database of a specified region
+ * @param localThroughputMeasurement Optional The local throughput measurement parameters for the database of a specified region
  */
 export type ActiveActiveDatabaseRegionParameters = {
     region: string,

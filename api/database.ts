@@ -162,11 +162,11 @@ export class Database {
     }
 
     /**
- * Updates an Active Active database (CRDB)
- * @param subscriptionId The subscription ID
- * @param databaseid The database ID
- * @param updateParameters The update parameters to update the database
- */
+    * Updates an Active Active database (CRDB)
+    * @param subscriptionId The subscription ID
+    * @param databaseid The database ID
+    * @param updateParameters The update parameters to update the database
+    */
     async updateCRDB(subscriptionId: number, databaseid: number, updateParameters: DatabaseUpdateParameters): Promise<TaskResponse & { [key: string]: any }> {
         try {
             const response = await this.client.put(`/subscriptions/${subscriptionId}/databases/${databaseid}/regions`, updateParameters);

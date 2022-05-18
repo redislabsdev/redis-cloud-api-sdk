@@ -5,7 +5,10 @@ import {
     CidrUpdateParameters, CreateSubscriptionParameters, SubscriptionUpdateParameters, 
     VpcPeeringCreationParameters 
 } from '../types/parameters/subscription';
-import { SubscriptionCidrWhitelist, SubscriptionVpcPeering, SubscriptionResponse, SubscriptionStatus, SubscriptionVpcPeeringStatus, ActiveActiveVpcPeeringsResponse } from '../types/responses/subscription';
+import {
+    SubscriptionCidrWhitelist, SubscriptionVpcPeering, SubscriptionResponse,
+    SubscriptionStatus, SubscriptionVpcPeeringStatus, ActiveActiveVpcPeeringsResponse
+} from '../types/responses/subscription';
 import { TaskResponse } from '../types/task';
 import { Task } from '../api/task';
 import { Client } from './api.base';
@@ -210,10 +213,10 @@ export class Subscription {
     }
 
     /**
- * Deletes a VPC Peering from Active Active subscription
- * @param subscriptionId The Subscription ID
- * @param peeringId The peering ID
- */
+    * Deletes a VPC Peering from Active Active subscription
+    * @param subscriptionId The Subscription ID
+    * @param peeringId The peering ID
+    */
     async deleteActiveActiveVpcPeering(subscriptionId: number, peeringId: number): Promise<TaskResponse & { [key: string]: any }> {
         try {
             const response = await this.client.delete(`/subscriptions/${subscriptionId}/regions/peerings/${peeringId}`);
@@ -291,10 +294,10 @@ export class Subscription {
     }
 
     /**
- * Deletes region/s from Active Active subscriptions
- * @param subscriptionId The subscription ID
- * @param deleteParameters The delete region parameters
- */
+    * Deletes region/s from Active Active subscriptions
+    * @param subscriptionId The subscription ID
+    * @param deleteParameters The delete region parameters
+    */
     async deleteActiveActiveRegion(subscriptionId: number, deleteParameters: ActiveActiveDeleteRegionParameters): Promise<TaskResponse & { [key: string]: any }> {
         try {
             const response = await this.client.delete(`/subscriptions/${subscriptionId}/regions`, deleteParameters);
