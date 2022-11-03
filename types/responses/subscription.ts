@@ -89,6 +89,7 @@ export type SubscriptionCidrWhitelist = {
  * @param awsAccountId The AWS account ID (Optional)
  * @param vpcUid The VPC ID (Optional)
  * @param vpcCidr The VPC CIDR (Optional)
+ * @param vpcCidrs The multiple VPC CIDRs (Optional)
  * @param awsPeeringUid The AWS peering ID (Optional)
  * @param vpcProjectUid The GCP project ID (Optional)
  * @param vpcNetworkName The GCP network name (Optional)
@@ -101,6 +102,7 @@ export type SubscriptionVpcPeering = {
     awsAccountId?: string,
     vpcUid?: string,
     vpcCidr?: string,
+    vpcCidrs?: VpcCidr[],
     awsPeeringUid?: string,
     vpcProjectUid?: string,
     vpcNetworkName?: string,
@@ -108,7 +110,23 @@ export type SubscriptionVpcPeering = {
 }
 
 /**
- * The availiable subscription status
+ * The VPC CIDR information
+ * @param vpcCidr The VPC CIDR address
+ * @param status The VPC CIDR status
+ */
+export type VpcCidr = {
+    vpcCidr: string,
+    status: VpcCidrStatus,
+    [key: string]: any
+}
+
+/**
+ * The list of statuses for VPC CIDR
+ */
+export type VpcCidrStatus = 'pending-creation' | 'pending-deletion' | 'active' | 'deleted' | 'failed';
+
+/**
+ * The available subscription status
  * @param active Active status
  * @param pending Pending status
  * @param error Error status
@@ -117,7 +135,7 @@ export type SubscriptionVpcPeering = {
 export type SubscriptionStatus = 'active' | 'pending' | 'error' | 'deleting' | 404;
 
 /**
- * The availiable subscription vpc peering status
+ * The available subscription vpc peering status
  * @param active Active status
  * @param inactive Inactive status
  * @param pending-acceptance Pending status

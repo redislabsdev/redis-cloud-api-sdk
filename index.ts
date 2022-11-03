@@ -26,7 +26,8 @@ export {
     SubscriptionCloudProvider, SubscriptionMemoryStorage, SubscriptionResponse,
     SubscriptionPricing, SubscriptionStatus, SubscriptionVpcPeering, SubscriptionVpcPeeringStatus,
     SubscriptionCidrWhitelist, SubscriptionCloudDetails, ActiveActiveRegionsResponse, 
-    ActiveActiveVpcPeeringsResponse, ActiveActiveVpcPeeringsRegion, ActiveActiveRegionInformation
+    ActiveActiveVpcPeeringsResponse, ActiveActiveVpcPeeringsRegion, ActiveActiveRegionInformation,
+    VpcCidr, VpcCidrStatus
 } from './types/responses/subscription';
 export { DatabaseModule, SubscriptionPaymentMethod } from './types/responses/general';
 // TASKS
