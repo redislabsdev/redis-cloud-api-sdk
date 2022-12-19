@@ -27,6 +27,8 @@ import { DatabaseModule } from './general';
  * @param security The database security
  * @param modules The database modules
  * @param alerts The database alerts
+ * @param backup The database backup
+ * @param crdbDatabases The Active Active databases (If subscriptions is of type Active Active)
  */
 export type DatabaseResponse = {
     databaseId: number,
@@ -54,6 +56,7 @@ export type DatabaseResponse = {
     security: DatabaseSecurity,
     modules: DatabaseModule[],
     alerts: DatabaseAlert[],
+    backup: DatabaseBackup,
     crdbDatabases?: CrdbDatabase[],
     [key: string]: any
 }
@@ -237,11 +240,14 @@ export type CrdbDatabase = {
  * @param enableRemoteBackup The backup status
  * @param interval The backup time interval
  * @param destination The backup destination
+ * @param timeUTC The time in UTC to backup the database
  */
 export type DatabaseBackup = {
     enableRemoteBackup: boolean,
     interval: BackupInterval,
-    destination: string
+    destination: string,
+    timeUTC: string,
+    [key: string]: any
 }
 
 /**

@@ -16,6 +16,7 @@ import { DatabaseProtocol, DatabaseDataPersistence, DatabaseDataEvictionPolicy, 
  * @param throughputMeasurement.value Required. Throughput value (as applies to selected measurement method)
  * @param replicaOf Optional. This database will be a replica of the specified Redis databases provided as one or more URI (sample format: 'redis://user:password@host:port)'. If the URI provided is Redis Cloud instance, only host and port should be provided (using the format: ['redis://endpoint1:6379’, ‘redis://endpoint2:6380’] ).
  * @param periodicBackupPath Optional. If specified, database will be able to perform backups to this path. If empty string is received, backup path will be removed
+ * @param remoteBackup Optional. Database backup options
  * @param sourceIp Optional. List of source IP addresses or subnet masks. If specified, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges (example: ['192.168.10.0/32’, ‘192.168.12.0/24’] )
  * @param enableTls Optional. When 'true’, requires TLS authentication for all connections (mTLS with valid clientSslCertificate, regular TLS when the clientSslCertificate is not provided)
  * @param clientSslCertificate Optional. If specified, this SSL certificate will be required to authenticate user connections. If empty string is received, SSL certificate will be removed
@@ -39,6 +40,7 @@ export type DatabaseCreationParameters = {
     averageItemSizeInBytes?: number,
     replicaOf?: string[],
     periodicBackupPath?: string,
+    remoteBackup?: DatabaseBackupParameters
     sourceIp?: string[],
     enableTls?: boolean,
     clientSslCertificate?: string,
@@ -62,6 +64,7 @@ export type DatabaseCreationParameters = {
  * @param throughputMeasurement.value Required. Throughput value (as applies to selected measurement method)
  * @param replicaOf Optional. This database will be a replica of the specified Redis databases provided as one or more URI (sample format: 'redis://user:password@host:port)'. If the URI provided is Redis Cloud instance, only host and port should be provided (using the format: ['redis://endpoint1:6379’, ‘redis://endpoint2:6380’] ).
  * @param periodicBackupPath Optional. If specified, database will be able to perform backups to this path. If empty string is received, backup path will be removed
+ * @param remoteBackup Optional. Database backup options
  * @param sourceIp Optional. List of source IP addresses or subnet masks. If specified, Redis clients will be able to connect to this database only from within the specified source IP addresses ranges (example: ['192.168.10.0/32’, ‘192.168.12.0/24’] )
  * @param enableTls Optional. When 'true’, requires TLS authentication for all connections (mTLS with valid clientSslCertificate, regular TLS when the clientSslCertificate is not provided)
  * @param clientSslCertificate Optional. If specified, this SSL certificate will be required to authenticate user connections. If empty string is received, SSL certificate will be removed
@@ -86,6 +89,7 @@ export type DatabaseUpdateParameters = {
     throughputMeasurement?: DatabaseThroughputMeasurement,
     replicaOf?: string[],
     periodicBackupPath?: string,
+    remoteBackup?: DatabaseBackupParameters
     sourceIp?: string[],
     enableTls?: boolean,
     clientSslCertificate?: string,
