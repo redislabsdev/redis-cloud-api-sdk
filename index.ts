@@ -2,15 +2,15 @@
 export { CloudAPISDK, CloudAPISDKParameters } from './api';
 // PARAMETERS
 export { CloudAccountCreationParameters, CloudAccountUpdateParameters } from './types/parameters/cloud-account';
-export { 
+export {
     DatabaseCreationParameters, DatabaseUpdateParameters, DatabaseImportParameters,
     Module, Alert, AlertName, RegionName, DatabaseBackupParameters, DatabaseBackupInterval,
     DatabaseBackupStorageType, LocalThroughputMeasurement, CrdbRegion, CreateRegionActiveActiveDatabaseParameters,
     ActiveActiveDatabaseRegionParameters
 } from './types/parameters/database';
-export { 
-    CreateSubscriptionParameters, SubscriptionUpdateParameters, 
-    VpcPeeringCreationParameters, CidrUpdateParameters, CloudProvider, 
+export {
+    CreateSubscriptionParameters, SubscriptionUpdateParameters,
+    VpcPeeringCreationParameters, CidrUpdateParameters, CloudProvider,
     DatabaseParameters, CloudProviderRegion, ActiveActiveCreateRegionParameters, DeploymentType,
     ActiveActiveGcpVpcPeeringParameters, ActiveActiveAwsVpcPeeringParameters, ActiveActiveDeleteRegionParameters,
     ActiveActiveRegion
@@ -18,14 +18,15 @@ export {
 // RESPONSES
 export { CloudAccountProvider } from './types/responses/cloud-account';
 export {
-    DatabaseProtocol, DatabaseDataEvictionPolicy, DatabaseDataPersistence, 
-    DatabaseImportSource, DatabaseThroughputMeasurement, DatabaseStatus, 
-    DatabaseResponse, DatabaseReplicaOfEndpoints, RegexRule, DatabaseClustering
+    DatabaseProtocol, DatabaseDataEvictionPolicy, DatabaseDataPersistence,
+    DatabaseImportSource, DatabaseThroughputMeasurement, DatabaseStatus,
+    DatabaseResponse, DatabaseReplicaOfEndpoints, RegexRule, DatabaseClustering,
+    DatabaseBackupResponse
 } from './types/responses/database';
 export {
     SubscriptionCloudProvider, SubscriptionMemoryStorage, SubscriptionResponse,
     SubscriptionPricing, SubscriptionStatus, SubscriptionVpcPeering, SubscriptionVpcPeeringStatus,
-    SubscriptionCidrWhitelist, SubscriptionCloudDetails, ActiveActiveRegionsResponse, 
+    SubscriptionCidrWhitelist, SubscriptionCloudDetails, ActiveActiveRegionsResponse,
     ActiveActiveVpcPeeringsResponse, ActiveActiveVpcPeeringsRegion, ActiveActiveRegionInformation,
     VpcCidr, VpcCidrStatus
 } from './types/responses/subscription';
