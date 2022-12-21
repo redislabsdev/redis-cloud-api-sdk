@@ -56,7 +56,7 @@ export type DatabaseResponse = {
     security: DatabaseSecurity,
     modules: DatabaseModule[],
     alerts: DatabaseAlert[],
-    backup: DatabaseBackup,
+    backup: DatabaseBackupResponse,
     crdbDatabases?: CrdbDatabase[],
     [key: string]: any
 }
@@ -231,7 +231,7 @@ export type CrdbDatabase = {
     dataPersistence: DatabaseDataPersistence,
     alerts: DatabaseAlert[],
     security: DatabaseSecurity,
-    backup: DatabaseBackup
+    backup: DatabaseBackupResponse
     [key: string]: any
 }
 
@@ -242,7 +242,7 @@ export type CrdbDatabase = {
  * @param destination The backup destination
  * @param timeUTC The time in UTC to backup the database
  */
-export type DatabaseBackup = {
+export type DatabaseBackupResponse = {
     enableRemoteBackup: boolean,
     interval: BackupInterval,
     destination: string,
