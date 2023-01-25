@@ -156,7 +156,7 @@ export type SubscriptionMemoryStorage = 'ram' | 'ram-and-flash';
  * @param AWS Amazon Web Service cloud provider
  * @param GCP Google Cloud Platform cloud provider
  */
-export type SubscriptionCloudProvider = 'AWS' | 'GCP';
+export type SubscriptionCloudProvider = 'AWS' | 'GCP' | 'AZURE';
 
 /**
  * The VPC Peerings information for Active Active
