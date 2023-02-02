@@ -138,13 +138,21 @@ export class Database {
     async waitForDatabaseStatus(subscriptionId: number, databaseId: number, expectedStatus: DatabaseStatus, timeoutInSeconds = 5 * 60, sleepTimeInSeconds = 5) {
         let database = await this.getDatabase(subscriptionId, databaseId);
         let timePassedInSeconds = 0;
-        while (database !== undefined && database?.status !== expectedStatus && database?.status !== 'error' && database?.status !== undefined && timePassedInSeconds <= timeoutInSeconds) { 
+        while (database !== undefined
+            && database?.status !== expectedStatus
+            && database?.status !== 'error'
+            && database?.status !== 'creation-failed'
+            && database?.status !== undefined
+            && timePassedInSeconds <= timeoutInSeconds) { 
             this.client.log('debug', `Waiting for database ${databaseId} status '${database.status}' to be become status '${expectedStatus}' (${timePassedInSeconds}/${timeoutInSeconds} (Subscription ${subscriptionId})`);
             await this.client.sleep(sleepTimeInSeconds);
             timePassedInSeconds+=sleepTimeInSeconds;
             database = await this.getDatabase(subscriptionId, databaseId);
         }
         this.client.log('debug', `Database ${databaseId} ended up as '${database.status}' status after ${timePassedInSeconds}/${timeoutInSeconds} (Subscription ${subscriptionId})`);
+        if (database.status !== expectedStatus) {
+            throw new Error(`[Cloud API SDK] Database ${databaseId} ended up as '${database.status}' instead of ${expectedStatus} status after ${timePassedInSeconds}/${timeoutInSeconds} (Subscription ${subscriptionId})`);
+        }
         return database;
     }
 

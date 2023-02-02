@@ -240,13 +240,20 @@ export class Subscription {
     async waitForSubscriptionStatus(subscriptionId: number, expectedStatus: SubscriptionStatus, timeoutInSeconds = 20 * 60, sleepTimeInSeconds = 5) {
         let subscription = await this.getSubscription(subscriptionId);
         let timePassedInSeconds = 0;
-        while (subscription !== undefined && subscription?.status !== expectedStatus && subscription?.status !== 'error' && subscription?.status !== undefined && timePassedInSeconds <= timeoutInSeconds) {
-            this.client.log('debug', `Waiting for subscription ${subscription.id} status '${subscription.status}' to be become status '${expectedStatus}' (${timePassedInSeconds}/${timeoutInSeconds})`);
+        while (subscription !== undefined
+            && subscription?.status !== expectedStatus
+            && subscription?.status !== 'error'
+            && subscription?.status !== undefined
+            && timePassedInSeconds <= timeoutInSeconds) {
+            this.client.log('debug', `Waiting for subscription ${subscriptionId} status '${subscription.status}' to be become status '${expectedStatus}' (${timePassedInSeconds}/${timeoutInSeconds})`);
             await this.client.sleep(sleepTimeInSeconds);
             timePassedInSeconds+=sleepTimeInSeconds;
             subscription = await this.getSubscription(subscriptionId);
         }
-        this.client.log('debug', `Subscription ${subscription.id} ended up as '${subscription.status}' status after ${timePassedInSeconds}/${timeoutInSeconds}`);
+        this.client.log('debug', `Subscription ${subscriptionId} ended up as '${subscription.status}' status after ${timePassedInSeconds}/${timeoutInSeconds}`);
+        if (subscription.status !== expectedStatus) {
+            throw new Error(`[Cloud API SDK] Subscription ${subscriptionId} ended up as '${subscription.status}' instead of ${expectedStatus} status after ${timePassedInSeconds}/${timeoutInSeconds}`);
+        }
         return subscription;
     }
 
