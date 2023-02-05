@@ -52,10 +52,8 @@ export class Database {
             return response.data;
         }
         catch(error: any | AxiosError) {
-            if (this.client.httpClient.prototype.isAxiosError(error)) {
-                if (error.response.status === 404) {
-                     return error.response as DatabaseResponse;
-                }
+            if (error.name === 'AxiosError' && error.response.status === 404) {
+                return error.response as DatabaseResponse;
             }
             return error as any;
         }
