@@ -1,3 +1,4 @@
+import { AxiosError } from 'axios';
 import { RegionName, DatabaseCreationParameters, DatabaseImportParameters, DatabaseUpdateParameters } from '../types/parameters/database';
 import { DatabaseResponse, DatabaseStatus } from '../types/responses/database';
 import { TaskResponse } from '../types/task';
@@ -50,7 +51,12 @@ export class Database {
             const response = await this.client.get(`/subscriptions/${subscriptionId}/databases/${databaseId}`);
             return response.data;
         }
-        catch(error) {
+        catch(error: any | AxiosError) {
+            if (this.client.httpClient.prototype.isAxiosError(error)) {
+                if (error.response.status === 404) {
+                     return error.response as DatabaseResponse;
+                }
+            }
             return error as any;
         }
     }
