@@ -13,6 +13,7 @@ import {
 import { TaskResponse } from '../types/task';
 import { Task } from '../api/task';
 import { Client } from './api.base';
+import { AxiosError } from 'axios';
 
 export class Subscription {
     private task: Task
@@ -58,7 +59,10 @@ export class Subscription {
             const response = await this.client.get(`/subscriptions/${subscriptionId}`);
             return response.data;
         }
-        catch(error) {
+        catch(error: any | AxiosError) {
+            if (error.name === 'AxiosError' && error.response.status === 404) {
+                return error.response as SubscriptionResponse;
+            }
             return error as any;
         }
     }
