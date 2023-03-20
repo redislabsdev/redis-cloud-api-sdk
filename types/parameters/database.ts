@@ -125,7 +125,7 @@ export type AlertName = 'dataset-size' | 'throughput-higher-than' | 'throughput-
  * @param parameters Optional Redis database module parameters (name and value), as relevant to the specific module (see modules parameters specification)
  */
 export type Module = {
-    name: DatabaseModule,
+    name: DatabaseModuleName,
     parameters?: {[key: string]: any}
 }
 
@@ -137,7 +137,7 @@ export type Module = {
  * @param RediSearch The Redis Search module
  * @param RedisTimeSeries The Redis Time Series module
  */
-type DatabaseModule = 'RedisBloom' | 'RedisGraph' | 'RedisJSON' | 'RediSearch' | 'RedisTimeSeries'
+export type DatabaseModuleName = 'RedisBloom' | 'RedisGraph' | 'RedisJSON' | 'RediSearch' | 'RedisTimeSeries'
 
 /**
  * The parameters needed to import a database file into an existing database
