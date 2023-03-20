@@ -6,7 +6,7 @@ export {
     DatabaseCreationParameters, DatabaseUpdateParameters, DatabaseImportParameters,
     Module, Alert, AlertName, RegionName, DatabaseBackupParameters, DatabaseBackupInterval,
     DatabaseBackupStorageType, LocalThroughputMeasurement, CrdbRegion, CreateRegionActiveActiveDatabaseParameters,
-    ActiveActiveDatabaseRegionParameters
+    ActiveActiveDatabaseRegionParameters, DatabaseModuleName
 } from './types/parameters/database';
 export {
     CreateSubscriptionParameters, SubscriptionUpdateParameters,

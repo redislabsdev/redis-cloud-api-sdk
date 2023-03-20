@@ -1,3 +1,5 @@
+import { DatabaseModuleName } from "../parameters/database"
+
 /**
  * Account information object
  * @param id The id of the account
@@ -58,7 +60,7 @@ export type DataPersistence = {
  */
 export type DatabaseModule = {
     id: number,
-    name: string,
+    name: DatabaseModuleName,
     version: string,
     description: string,
     parameters: DatabaseModuleParameter[],
